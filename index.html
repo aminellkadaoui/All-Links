@@ -386,8 +386,9 @@
     }
 
     els.copyEmailBtn.addEventListener('click', () => {
-      const email = els.copyEmailBtn.dataset.copy;
-      navigator.clipboard.writeText(email).then(() => toast('تم نسخ الإيميل'));
+      const email = (els.copyEmailBtn.dataset.copy || 'contact.amineelka@gmail.com').trim();
+      // افتح تطبيق البريد مباشرة مع تجهيز رسالة إلى البريد
+      window.location.href = `mailto:${encodeURIComponent(email)}`;
     });
 
     render();
